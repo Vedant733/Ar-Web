@@ -1,0 +1,42 @@
+[
+  {
+    "id": 10,
+    "title": "Money Plant",
+    "description": "Home Decoration Plant.",
+    "price": 10,
+    "colour": "green",
+    "image": "Plant.jpeg"
+  },
+  {
+    "id": 11,
+    "title": "Gaming Chair",
+    "description": "Comfortable Chair For Gamers.",
+    "price": 599,
+    "colour": "Red And Black Shaded",
+    "image": "Chair.jpeg"
+  },
+  {
+    "id": 12,
+    "title": "Porcelain Elephant Pot",
+    "description": "Ancient Product.",
+    "price": 70,
+    "colour": "Blue And White",
+    "image": "Pot.jpeg"
+  },
+  {
+    "id": 13,
+    "title": "Kingfisher Bird Painting",
+    "description": "Beautiful Art.",
+    "price": 50,
+    "colour": "Green And Blue Shades",
+    "image": "Kingfisher.jpeg"
+  },
+  {
+    "id": 14,
+    "title": "Clock",
+    "description": "Wall Clock.",
+    "price": 40,
+    "colour": "White And Black",
+    "image": "Clock.jpeg"
+  }
+]

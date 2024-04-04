@@ -1,6 +1,7 @@
 import { useQuery } from "react-query";
 import { useCartStore } from "../store/CartStore";
 import allAr from "../assets/data.json";
+import { Product } from "../components/ProductCard";
 
 type CartProductPropWrapper = {
   id: Number;
@@ -11,7 +12,7 @@ export function CartProduct({ id, setTotalPrice }: CartProductPropWrapper) {
   const cart = useCartStore((state) => state.cart);
   const { data, isLoading } = useQuery(
     "GET_CART_PRODUCT" + id,
-    () => allAr.filter((item) => item.id === id)[0],
+    () => allAr.filter((item: Product) => item.id === id)[0],
     {
       onSuccess: (res) => {
         const q = cart.get(id as number);
