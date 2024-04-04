@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { useCartStore } from "../store/CartStore";
 
 interface WrapperProp {
@@ -8,7 +7,6 @@ interface WrapperProp {
 export interface Product {
   id: number;
   title: string;
-  category: string;
   description: string;
   price: number;
   image: string;
@@ -19,20 +17,21 @@ function ProductCard({ item }: WrapperProp) {
   const addToCart = useCartStore((state) => state.addToCart);
   const removeFromCart = useCartStore((state) => state.removeFromCart);
   const isCartEmpty = !cart.has(item.id);
-  const navigate = useNavigate();
+
   return (
-    <div
-      className="product-card"
-      onClick={() => {
-        navigate("/" + item.id);
-      }}
-    >
-      <div style={{ display: "flex", width: "100%", justifyContent: "center" }}>
-        <img src={item.image} width="200px" style={{ aspectRatio: 1.3 }} />
+    <div className="product-card">
+      <div style={{ display: "flex", width: "100%", overflow: "hidden" }}>
+        <img src={item.image} width="100%" style={{ height: "200px" }} />
       </div>
-      <div style={{ marginLeft: "8px" }}>
-        <h4 style={{ fontSize: "1.2rem", margin: 0 }}>{item.title}</h4>
+      <div style={{ marginLeft: "8px", padding: "1rem" }}>
+        <h4
+          className="product-card-title"
+          style={{ fontSize: "1.2rem", margin: 0 }}
+        >
+          {item.title}
+        </h4>
         <p
+          className="product-card-description"
           style={{
             display: "-webkit-box",
             WebkitLineClamp: 3,

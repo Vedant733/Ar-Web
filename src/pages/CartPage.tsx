@@ -19,11 +19,6 @@ function CartPage() {
         <>Feels Light...</>
       ) : (
         <>
-          <div className="cart-list">
-            {[...cart.keys()].map((key) => (
-              <CartProduct key={key} id={key} setTotalPrice={setTotalPrice} />
-            ))}
-          </div>
           <div
             style={{
               border: "1px solid black",
@@ -55,6 +50,11 @@ free stuff. Enjoy Shopping :)"
             <strong>
               <SummaryContent title={"Total Amount:"} amount={0} />
             </strong>
+          </div>
+          <div className="cart-list">
+            {[...cart.keys()].map((key) => (
+              <CartProduct key={key} id={key} setTotalPrice={setTotalPrice} />
+            ))}
           </div>
         </>
       )}

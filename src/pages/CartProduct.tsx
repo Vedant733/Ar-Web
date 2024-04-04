@@ -1,5 +1,7 @@
 import { useQuery } from "react-query";
 import { useCartStore } from "../store/CartStore";
+import allAr from "../assets/data.json";
+
 type CartProductPropWrapper = {
   id: Number;
   setTotalPrice: React.Dispatch<React.SetStateAction<number>>;
@@ -9,10 +11,7 @@ export function CartProduct({ id, setTotalPrice }: CartProductPropWrapper) {
   const cart = useCartStore((state) => state.cart);
   const { data, isLoading } = useQuery(
     "GET_CART_PRODUCT" + id,
-    () =>
-      fetch("https://fakestoreapi.com/products/" + id).then((res) =>
-        res.json()
-      ),
+    () => allAr.filter((item) => item.id === id)[0],
     {
       onSuccess: (res) => {
         const q = cart.get(id as number);
@@ -37,7 +36,7 @@ export function CartProduct({ id, setTotalPrice }: CartProductPropWrapper) {
         flexWrap: "wrap",
       }}
     >
-      {!isLoading && (
+      {!isLoading && data && (
         <>
           <img alt="" src={data.image} width="15%" style={{ aspectRatio: 1 }} />
           <div
@@ -49,6 +48,7 @@ export function CartProduct({ id, setTotalPrice }: CartProductPropWrapper) {
           >
             <div style={{ fontWeight: 600 }}>{data.title}</div>
             <p
+              className="card-p-description"
               style={{
                 display: "-webkit-box",
                 WebkitLineClamp: 2,
@@ -60,7 +60,7 @@ export function CartProduct({ id, setTotalPrice }: CartProductPropWrapper) {
               {data.description}
             </p>
           </div>
-          <div style={{ width: "18%", fontWeight: 600, marginRight: "2%" }}>
+          <div style={{ width: "20%", fontWeight: 600, marginRight: "2%" }}>
             Rs.{data.price}
             <br />
             <br />
